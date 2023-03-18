@@ -1,0 +1,1 @@
+alert('Witaj w naszym sklepie z częściami do samochodów')
