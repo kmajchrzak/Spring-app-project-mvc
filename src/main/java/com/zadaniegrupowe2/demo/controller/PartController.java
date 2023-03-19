@@ -1,5 +1,6 @@
 package com.zadaniegrupowe2.demo.controller;
 
+import com.zadaniegrupowe2.demo.entity.PartType;
 import com.zadaniegrupowe2.demo.exception.PartServiceException;
 import com.zadaniegrupowe2.demo.request.AddPartRequest;
 import com.zadaniegrupowe2.demo.service.PartService;
@@ -26,9 +27,9 @@ public class PartController {
 }
 
    @PostMapping("/add-parts")
-    public String createPlanet(@RequestParam String name,
+    public String createPart(@RequestParam String name,
                                @RequestParam double price,
-                               @RequestParam(name = "vehicle_type") String vehicleType,
+                               @RequestParam(name = "vehicle_type") PartType vehicleType,
                                Model model){
         try {
             partService.addPart(new AddPartRequest(name, price, vehicleType));
