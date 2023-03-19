@@ -1,14 +1,16 @@
 package com.zadaniegrupowe2.demo.request;
 
+import com.zadaniegrupowe2.demo.entity.PartType;
+
 public class AddPartRequest {
     private String name;
     private double price;
-    private String vehicleType;
+    private PartType partType;
 
-    public AddPartRequest(String name, double price, String vehicleType) {
+    public AddPartRequest(String name, double price, PartType partType) {
         this.name = name;
         this.price = price;
-        this.vehicleType = vehicleType;
+        this.partType = partType;
     }
 
     public String getName() {
@@ -19,8 +21,8 @@ public class AddPartRequest {
         return price;
     }
 
-    public String getVehicleType() {
-        return vehicleType;
+    public PartType getType() {
+        return partType;
     }
 
     @Override
@@ -28,7 +30,7 @@ public class AddPartRequest {
         return "AddPartRequest{" +
                 "name='" + name + '\'' +
                 ", price=" + price +
-                ", vehicleType='" + vehicleType + '\'' +
+                ", partType='" + partType + '\'' +
                 '}';
     }
 }
