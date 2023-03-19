@@ -20,9 +20,9 @@ public class PartService {
         if (request.getName().isBlank()) {
             throw new PartServiceException("Nie uzupełniono nazwy!");
         } else if (request.getPrice() <= 0) {
-            throw new PartServiceException("Cena min. 1");
+            throw new PartServiceException("Cena nie może być 0");
         }
-        PartType type = PartType.valueOf(request.getVehicleType().toString());
+        PartType type = PartType.valueOf(request.getType().toString());
         Part part = new Part(request.getName(),request.getPrice(), type);
         repository.save(part);
     }

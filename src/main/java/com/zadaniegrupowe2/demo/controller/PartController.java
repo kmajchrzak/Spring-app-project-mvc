@@ -29,10 +29,10 @@ public class PartController {
    @PostMapping("/add-parts")
     public String createPart(@RequestParam String name,
                                @RequestParam double price,
-                               @RequestParam(name = "vehicle_type") PartType vehicleType,
+                               @RequestParam(name = "part_type") PartType partType,
                                Model model){
         try {
-            partService.addPart(new AddPartRequest(name, price, vehicleType));
+            partService.addPart(new AddPartRequest(name, price, partType));
             model.addAttribute("message", "Dodano część o nazwie: " + name);
         } catch (PartServiceException e) {
             model.addAttribute("message", e.getMessage());

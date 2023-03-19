@@ -5,12 +5,12 @@ import com.zadaniegrupowe2.demo.entity.PartType;
 public class AddPartRequest {
     private String name;
     private double price;
-    private PartType vehicleType;
+    private PartType partType;
 
-    public AddPartRequest(String name, double price, PartType vehicleType) {
+    public AddPartRequest(String name, double price, PartType partType) {
         this.name = name;
         this.price = price;
-        this.vehicleType = vehicleType;
+        this.partType = partType;
     }
 
     public String getName() {
@@ -21,8 +21,8 @@ public class AddPartRequest {
         return price;
     }
 
-    public PartType getVehicleType() {
-        return vehicleType;
+    public PartType getType() {
+        return partType;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class AddPartRequest {
         return "AddPartRequest{" +
                 "name='" + name + '\'' +
                 ", price=" + price +
-                ", vehicleType='" + vehicleType + '\'' +
+                ", partType='" + partType + '\'' +
                 '}';
     }
 }
