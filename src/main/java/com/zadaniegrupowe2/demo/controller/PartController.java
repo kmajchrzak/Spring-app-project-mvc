@@ -3,14 +3,15 @@ package com.zadaniegrupowe2.demo.controller;
 import com.zadaniegrupowe2.demo.entity.PartType;
 import com.zadaniegrupowe2.demo.exception.PartServiceException;
 import com.zadaniegrupowe2.demo.request.AddPartRequest;
+import com.zadaniegrupowe2.demo.request.PartFilterRequest;
+import com.zadaniegrupowe2.demo.response.PartResponse;
 import com.zadaniegrupowe2.demo.service.PartService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class PartController {
@@ -29,7 +30,7 @@ public class PartController {
    @PostMapping("/add-parts")
     public String createPart(@RequestParam String name,
                                @RequestParam double price,
-                               @RequestParam(name = "part_type") PartType partType,
+                               @RequestParam(name = "part_type") String partType,
                                Model model){
         try {
             partService.addPart(new AddPartRequest(name, price, partType));
@@ -39,6 +40,23 @@ public class PartController {
         }
         return "welcome-page";
 
+    }
+    @GetMapping("/find-part")
+    public String getFindPlanetPage(Model model) {
+        //czy na pewno encja w kontrolerze? architektura warstw!!
+        model.addAttribute("request", new PartFilterRequest());
+        List<PartResponse> parts =  partService.getAllParts();
+        model.addAttribute("parts", parts);
+        return "find-part";
+    }
+
+    @PostMapping("/find-part")
+    public String filteredFindPartPage(
+            @ModelAttribute("request") PartFilterRequest request,
+            Model model) {
+        List<PartResponse> parts =  partService.getParts(request);
+        model.addAttribute("parts", parts);
+        return "find-part";
     }
 
 

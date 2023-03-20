@@ -1,5 +1,7 @@
 package com.zadaniegrupowe2.demo.request;
 
+import com.zadaniegrupowe2.demo.entity.PartType;
+
 import java.util.Objects;
 
 public class PartFilterRequest {
@@ -15,6 +17,10 @@ public class PartFilterRequest {
         if (o == null || getClass() != o.getClass()) return false;
         PartFilterRequest that = (PartFilterRequest) o;
         return Objects.equals(partType, that.partType);
+    }
+
+    public void setPartType(String partType) {
+        this.partType = partType;
     }
 
     @Override

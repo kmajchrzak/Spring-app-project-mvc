@@ -2,6 +2,8 @@ package com.zadaniegrupowe2.demo.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name="parts")
 public class Part {
@@ -20,5 +22,40 @@ public class Part {
     }
 
     public Part() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public PartType getType() {
+        return type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Part part = (Part) o;
+        return id == part.id && Double.compare(part.price, price) == 0 && Objects.equals(name, part.name) && type == part.type;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price, type);
+    }
+
+    @Override
+    public String toString() {
+        return "Part{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", type=" + type +
+                '}';
     }
 }

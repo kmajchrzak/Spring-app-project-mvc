@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wyszukiwanie części</title>
+</head>
+<body>
+<h1>Oto znalezione części:</h1>
+
+<form action="/find-part" method="post">
+  <label>Wybierz rodzaj pojazdu do którego szukasz części:</label>
+  <br>
+  <label>samochody osobowe</label>
+  <input type="radio" th:field="${request.partType}" value="AUTO">
+  <br>
+  <label>Samochody ciężarowe</label>
+  <input type="radio" th:field="${request.partType}" value="TIR">
+  <br>
+  <label>Motor</label>
+  <input type="radio" th:field="${request.partType}" value="MOTOR">
+  <br>
+  <button type="submit">Filtruj!</button>
+  <br>
+</form>
+
+<div th:each="part : ${parts}">
+  <div th:text="${part.name}"></div>
+  <!--    planet.name to tak naprawdę planet.getName()-->
+</div>
+</body>
+</html>

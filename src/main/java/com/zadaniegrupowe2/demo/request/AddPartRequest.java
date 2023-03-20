@@ -5,9 +5,9 @@ import com.zadaniegrupowe2.demo.entity.PartType;
 public class AddPartRequest {
     private String name;
     private double price;
-    private PartType partType;
+    private String partType;
 
-    public AddPartRequest(String name, double price, PartType partType) {
+    public AddPartRequest(String name, double price, String partType) {
         this.name = name;
         this.price = price;
         this.partType = partType;
@@ -21,7 +21,7 @@ public class AddPartRequest {
         return price;
     }
 
-    public PartType getType() {
+    public String getPartType() {
         return partType;
     }
 
